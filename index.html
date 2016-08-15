@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>Cake Form</title>
+  </head>
+
+  <body>
+
+    <div class="page">
+      <h1 class="floating-header">Cake Enquiry Form</h1>
+
+      <form>
+
+        <div class="field">
+          <label class="label" for="FormField_Name">Name:</label>
+          <input class="text-field" type="text" id="FormField_Name" required>
+        </div>
+
+        <div class="field">
+          <label class="label" for="FormField_Email">Email:</label>
+          <input class="text-field" type="email" id="FormField_Email" required>
+        </div>
+
+        <div class="field">
+          <label class="label">Type of cake:</label>
+          <ul class="choice-list">
+            <li>
+              <label>
+                <input class="choice-field" type="checkbox" id="FormField_TypeCupcakes">
+                Cupcakes
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="checkbox" id="FormField_TypeCheesecakes">
+                Cheesecakes
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="checkbox" id="FormField_TypeButterCakes">
+                Butter Cakes
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="checkbox" id="FormField_TypeMudcakes">
+                Mudcakes
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="field">
+          <label class="label">Celebration Type:</label>
+
+          <ul class="choice-list field">
+            <li>
+              <label>
+                <input class="choice-field" type="radio" name="celebration" value="birthday">
+                Birthday
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="radio" name="celebration" value="wedding">
+                Wedding
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="radio" name="celebration" value="corporate">
+                Corporate
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input class="choice-field" type="radio" name="celebration" value="other">
+                Other
+              </label>
+            </li>
+          </ul>
+
+          <input class="text-field" type="email" id="FormField_Email">
+        </div>
+
+        <div class="field">
+          <label class="label" for="FormField_Dream">Tell us about your dream:</label>
+          <textarea class="text-field" id="FormField_Dream"></textarea>
+        </div>
+
+        <div class="field">
+          <button class="button" type="submit">Send away</button>
+          <button class="link-button" type="reset">Reset</button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/styles.css">
+    <script src="/dist/main.js"></script>
+  </body>
+</html>

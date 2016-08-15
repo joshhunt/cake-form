@@ -1,0 +1,73 @@
+$bgColor = #374550
+$textColor = #F8F8F6
+$accentColor = #8C979D
+$pagePadding = 30px
+$fontSize = 14px
+
+* { box-sizing: border-box }
+
+body
+  font-family: 'Open Sans', sans-serif
+  font-size: $fontSize
+  background: $bgColor
+  color: $textColor
+
+.page
+  width: 100%
+  max-width: 550px
+  margin: 80px auto
+  border: 1px solid $accentColor
+  padding: $pagePadding
+
+_floatingHeaderPadding = 10px
+.floating-header
+  display: inline-block
+  margin-left: -(_floatingHeaderPadding)
+  margin-top: -(22px + $pagePadding)
+  padding: 0 _floatingHeaderPadding
+  font-size: 2em
+  background: $bgColor
+
+.label
+  display: block
+  margin-bottom: .5em
+  font-weight: bold
+
+.text-field
+  width: 100%
+  padding: .5em
+  border: 1px solid $accentColor
+  font-size: 1em
+  background: lighten($bgColor, 15%)
+  color: $textColor
+
+.field
+  margin-bottom: 1.5em
+
+.choice-list
+  margin: 0
+  padding: 0
+  margin-bottom: .5em
+
+  li
+    list-style: none
+    margin-bottom: .25em
+
+.button,
+.link-button
+  background: transparent
+  padding: 3px 6px
+  border: 2px solid $textColor
+  font-size: 1em
+  color: $textColor
+  font-weight: 500
+  margin-right: 1em
+  transition: 50ms ease-in-out
+
+  &:active
+    opacity .6
+
+.link-button
+  font-weight: regular
+  text-decoration: underline
+  border-color: transparent
