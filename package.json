@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp"
+    "start": "gulp",
+    "lint": "eslint ./scripts",
+    "test": "npm run lint && ava"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ava": "^0.16.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-plugin-import": "^1.13.0",
     "finalhandler": "^0.5.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0",
+    "jsdom": "^9.4.2",
     "serve-static": "^1.11.1"
   }
 }

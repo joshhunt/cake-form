@@ -2,7 +2,7 @@ const http = require('http');
 
 const gulp = require('gulp');
 const stylus = require('gulp-stylus');
-const rename = require("gulp-rename");
+const rename = require('gulp-rename');
 const finalhandler = require('finalhandler');
 const serveStatic = require('serve-static');
 
@@ -32,3 +32,5 @@ gulp.task('watch', () => {
   gulp.watch('./styles/**.styl', ['styles']);
   gulp.watch('./scripts/**.js', ['scripts']);
 });
+
+gulp.task('default', ['styles', 'scripts', 'serve', 'watch']);

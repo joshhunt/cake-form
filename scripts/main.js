@@ -1,78 +1,76 @@
-var validationList = document.querySelector('.js-validation-list');
-var success = document.querySelector('.js-success');
-var form = document.querySelector('.js-form');
-var inputs = form.querySelectorAll('input');
-var radios = document.querySelectorAll('.js-celeb');
-var otherCelebration = document.querySelector('.js-celeb-other');
-var otherTextField = document.querySelector('.js-celeb-text');
+(function () {
+  const validationList = document.querySelector('.js-validation-list');
+  const success = document.querySelector('.js-success');
+  const form = document.querySelector('.js-form');
+  const inputs = form.querySelectorAll('input');
+  const radios = document.querySelectorAll('.js-celeb');
+  const otherCelebration = document.querySelector('.js-celeb-other');
+  const otherTextField = document.querySelector('.js-celeb-text');
 
-// Suppress the browser validation UI
-form.noValidate = true;
+  // Suppress the browser validation UI
+  form.noValidate = true;
 
-// Kinda bleh, but 'good enough' for this toy project
-NodeList.prototype.forEach = Array.prototype.forEach;
+  // Kinda bleh, but 'good enough' for this toy project
+  window.NodeList.prototype.forEach = Array.prototype.forEach;
+  window.NodeList.prototype.map = Array.prototype.map;
 
-function getValidityErrorMessages(input) {
-  var name = input.name;
-  var validity = input.validity;
-  var msgs = [];
+  function validateInput(input) {
+    // Would be nice to use input.validity here,
+    // but browser support is iffy
+    const name = input.name;
+    const value = input.value;
 
-  if (validity.valueMissing){
-    msgs.push(name + ' is missing');
+    if (input.required && !value.length) {
+      return name + ' is missing';
+    }
+
+    if (input.type === 'email' && !/@/.test(value)) {
+      return name + ' is not valid for type ' + input.type;
+    }
+
+    return null;
   }
 
-  if (validity.typeMismatch){
-    msgs.push(name + ' is not valid for type ' + input.type);
+  function presentValidationErrors(messages) {
+    window.scrollTo(0, 0);
+    validationList.innerHTML = messages.map(function (msg) {
+      return '<li>' + msg + '</li>';
+    }).join('');
+
+    validationList.parentNode.classList.remove('hidden');
   }
 
-  return msgs;
-}
+  function presentSuccessMessage() {
+    window.scrollTo(0, 0);
+    success.classList.remove('hidden');
+  }
 
-function validateInput(input) {
-  return getValidityErrorMessages(input);
-}
+  function validateForm() {
+    // Reset all existing validation errors
+    validationList.innerHTML = '';
+    validationList.parentNode.classList.add('hidden');
 
-function presentValidationErrors(messages) {
-  window.scrollTo(0, 0);
-  validationList.innerHTML = messages.map(function(msg) {
-    return '<li>' + msg + '</li>';
-  }).join('');
+    // Qi
+    const messages = inputs.map(validateInput).filter(Boolean);
 
-  validationList.parentNode.classList.remove('hidden');
-}
+    if (messages.length) {
+      presentValidationErrors(messages);
+    } else {
+      presentSuccessMessage();
+    }
+  }
 
-function presentSuccessMessage() {
-  window.scrollTo(0, 0);
-  success.classList.remove('hidden');
-}
-
-function validateForm() {
-  // Reset all existing validation errors
-  var messages = [];
-  validationList.innerHTML = '';
-  validationList.parentNode.classList.add('hidden');
-
-  inputs.forEach(function(input) {
-    messages = messages.concat(validateInput(input));
+  // Set the `required` attribute on the 'other' text box when the
+  // other radio box is selected
+  radios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      otherTextField.required = otherCelebration.checked;
+    });
   });
 
-  if (messages.length) {
-    presentValidationErrors(messages)
-  } else {
-    presentSuccessMessage();
-  }
-}
-
-// Set the `required` attribute on the 'other' text box when the
-// other radio box is selected
-radios.forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    otherTextField.required = otherCelebration.checked;
-  })
-});
-
-//
-form.addEventListener('submit', function(ev) {
-  ev.preventDefault();
-  validateForm();
-});
+  //
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    validateForm();
+  });
+}());
