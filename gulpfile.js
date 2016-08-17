@@ -16,7 +16,12 @@ gulp.task('serve', () => {
   server.listen(3000);
 });
 
-gulp.task('styles', function () {
+gulp.task('scripts', () => {
+  return gulp.src('./scripts/**.js')
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('styles', () => {
   return gulp.src('./styles/_index.styl')
     .pipe(stylus())
     .pipe(rename('styles.css'))
@@ -25,4 +30,5 @@ gulp.task('styles', function () {
 
 gulp.task('watch', () => {
   gulp.watch('./styles/**.styl', ['styles']);
+  gulp.watch('./scripts/**.js', ['scripts']);
 });

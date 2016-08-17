@@ -8,16 +8,19 @@
     <div class="page">
       <h1 class="floating-header">Cake Enquiry Form</h1>
 
-      <form>
+      <ul class="validation-errors js-validation hidden">
+      </ul>
+
+      <form class="js-form">
 
         <div class="field">
           <label class="label" for="FormField_Name">Name:</label>
-          <input class="text-field" type="text" id="FormField_Name" required>
+          <input class="text-field" type="text" id="FormField_Name" name="name" required>
         </div>
 
         <div class="field">
           <label class="label" for="FormField_Email">Email:</label>
-          <input class="text-field" type="email" id="FormField_Email" required>
+          <input class="text-field" type="email" id="FormField_Email" name="email" required>
         </div>
 
         <div class="field">
@@ -59,34 +62,38 @@
           <ul class="choice-list field">
             <li>
               <label>
-                <input class="choice-field" type="radio" name="celebration" value="birthday">
+                <input class="choice-field js-celeb" type="radio" name="celebration" value="birthday">
                 Birthday
               </label>
             </li>
 
             <li>
               <label>
-                <input class="choice-field" type="radio" name="celebration" value="wedding">
+                <input class="choice-field js-celeb" type="radio" name="celebration" value="wedding">
                 Wedding
               </label>
             </li>
 
             <li>
               <label>
-                <input class="choice-field" type="radio" name="celebration" value="corporate">
+                <input class="choice-field js-celeb" type="radio" name="celebration" value="corporate">
                 Corporate
               </label>
             </li>
 
             <li>
               <label>
-                <input class="choice-field" type="radio" name="celebration" value="other">
+                <input
+                  class="choice-field js-celeb js-celeb-other"
+                  type="radio"
+                  value="other"
+                >
                 Other
               </label>
             </li>
           </ul>
 
-          <input class="text-field" type="email" id="FormField_Email">
+          <input class="text-field js-celeb-text" name="celebration other type" type="text">
         </div>
 
         <div class="field">
