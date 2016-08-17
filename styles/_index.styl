@@ -1,8 +1,11 @@
 $bgColor = #374550
 $textColor = #F8F8F6
-$accentColor = #8C979D
+$accentColor = desaturate(lighten($bgColor, 50%), 50%)
+$dangerColor = #E54A5C
+$successColor = #1AC98E
 $pagePadding = 30px
 $fontSize = 14px
+$borderRadius = 3px
 
 * { box-sizing: border-box }
 
@@ -16,8 +19,9 @@ body
   width: 100%
   max-width: 550px
   margin: 80px auto
-  border: 1px solid $accentColor
   padding: $pagePadding
+  border: 1px solid $accentColor
+  border-radius: $borderRadius
 
 _floatingHeaderPadding = 10px
 .floating-header
@@ -40,6 +44,7 @@ _floatingHeaderPadding = 10px
   font-size: 1em
   background: lighten($bgColor, 15%)
   color: $textColor
+  border-radius: $borderRadius
 
 .field
   margin-bottom: 1.5em
@@ -55,13 +60,14 @@ _floatingHeaderPadding = 10px
 
 .button,
 .link-button
-  background: transparent
   padding: 5px 10px
+  margin-right: 1em
   border: 3px solid $textColor
   font-size: 1em
-  color: $textColor
   font-weight: 500
-  margin-right: 1em
+  border-radius: $borderRadius
+  background: transparent
+  color: $textColor
   transition: 50ms ease-in-out
 
   &:active
@@ -72,5 +78,18 @@ _floatingHeaderPadding = 10px
   text-decoration: underline
   border-color: transparent
 
+.hidden { display: none }
 
-.hide { display: none }
+.box
+  padding: 10px 20px
+  margin-bottom: 1.5em
+  border-radius: $borderRadius
+  border: 1px solid transparent
+
+.validation
+  background: $dangerColor
+  border-color: desaturate(lighten($dangerColor, 50%), 50%)
+
+.success
+  background: $successColor
+  border-color: desaturate(lighten($successColor, 50%), 50%)

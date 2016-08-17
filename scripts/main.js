@@ -1,4 +1,5 @@
-var validationContainer = document.querySelector('.validation-errors');
+var validationList = document.querySelector('.js-validation-list');
+var success = document.querySelector('.js-success');
 var form = document.querySelector('.js-form');
 var inputs = form.querySelectorAll('input');
 var radios = document.querySelectorAll('.js-celeb');
@@ -31,25 +32,35 @@ function validateInput(input) {
   return getValidityErrorMessages(input);
 }
 
+function presentValidationErrors(messages) {
+  window.scrollTo(0, 0);
+  validationList.innerHTML = messages.map(function(msg) {
+    return '<li>' + msg + '</li>';
+  }).join('');
+
+  validationList.parentNode.classList.remove('hidden');
+}
+
+function presentSuccessMessage() {
+  window.scrollTo(0, 0);
+  success.classList.remove('hidden');
+}
+
 function validateForm() {
-  var validityMessages = [];
+  // Reset all existing validation errors
+  var messages = [];
+  validationList.innerHTML = '';
+  validationList.parentNode.classList.add('hidden');
 
-  validationContainer.innerHTML = '';
-  validationContainer.classList.add('hide');
+  inputs.forEach(function(input) {
+    messages = messages.concat(validateInput(input));
+  });
 
-  inputs.forEach();
-
-  var formIsValid = !validityMessages.length;
-
-  if (!formIsValid) {
-    validationContainer.innerHTML = validityMessages.map(function(msg) {
-      return '<li>' + msg + '</li>';
-    }).join('');
-
-    validationContainer.classList.remove('hide');
+  if (messages.length) {
+    presentValidationErrors(messages)
+  } else {
+    presentSuccessMessage();
   }
-
-  return formIsValid;
 }
 
 // Set the `required` attribute on the 'other' text box when the
@@ -63,4 +74,5 @@ radios.forEach(function(radio) {
 //
 form.addEventListener('submit', function(ev) {
   ev.preventDefault();
+  validateForm();
 });
