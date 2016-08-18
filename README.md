@@ -4,8 +4,9 @@ Simple HTML form for ordering a cake, complete
 
 ## Getting Started
 
+* Node v5 or greater is required
 * `npm install` to install all dependencies, then,
-* `npm start` to serve the site immediately on localhost:3000.  
+* `npm start` to serve the site immediately on localhost:3000.
 * `npm test` to lint the Javascripts and run unit tests.
 
 ## Dependencies
