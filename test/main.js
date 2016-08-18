@@ -9,6 +9,7 @@ const find = select => document.querySelector(select);
 const trigger = (node, ev) => node.dispatchEvent(new window.Event(ev));
 
 test.beforeEach(() => {
+  // Set up a brand new DOM and reevaluate the application code.
   const path = '../scripts/main';
   delete require.cache[require.resolve(path)];
   global.document = jsdom.jsdom(pageHtml);

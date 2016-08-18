@@ -14,6 +14,7 @@ gulp.task('serve', () => {
   });
 
   server.listen(3000);
+  console.log('==> Serving on localhost:3000');
 });
 
 gulp.task('scripts', () => {

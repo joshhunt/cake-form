@@ -50,7 +50,7 @@
     validationList.innerHTML = '';
     validationList.parentNode.classList.add('hidden');
 
-    // Qi
+    // Get a single error message from each input and remove the empty entries
     const messages = inputs.map(validateInput).filter(Boolean);
 
     if (messages.length) {
@@ -68,7 +68,7 @@
     });
   });
 
-  //
+  // Set up the submit listener to validate the form
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     validateForm();
